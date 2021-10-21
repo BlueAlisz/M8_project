@@ -58,7 +58,11 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 })
 
-
+userSchema.virtual('orders', {
+    ref: 'Order',
+    localField: '_id',
+    foreignField: 'owner'
+})
 
 userSchema.methods.toJSON = function () {
     const user = this

@@ -3,7 +3,7 @@ const Product = require('../models/product')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 
-router.post('/products', auth, async (req, res) => {
+router.post('/products', async (req, res) => {
     const product = new Product({
         ...req.body
     })
