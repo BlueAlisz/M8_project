@@ -17,6 +17,18 @@ router.post('/order', auth, async (req, res) => {
     }
 })
 
+router.get('/order/me', auth, async (req, res) => {
+    
+    try {
+        await req.user.populate({
+            path:'orders'
+        })
 
+        res.send(req.user.orders)
+    } catch (e) {
+        console.log(e)
+        res.status(500).send()
+    }
+})
 
 module.exports = router
