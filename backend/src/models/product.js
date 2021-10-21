@@ -6,15 +6,23 @@ const productSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    completed: {
-        type: Boolean,
-        default: false
+    image: {
+        type: String,
+        required: true
     },
-    owner: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
+    description: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    catalog: {
+        type: String,
+        required: true
     }
+
 }, {
     timestamps: true
 })

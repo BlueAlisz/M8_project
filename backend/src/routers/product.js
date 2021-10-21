@@ -5,8 +5,7 @@ const router = new express.Router()
 
 router.post('/products', auth, async (req, res) => {
     const product = new Product({
-        ...req.body,
-        owner: req.user._id
+        ...req.body
     })
     
     try {
@@ -17,12 +16,17 @@ router.post('/products', auth, async (req, res) => {
     }
 })
 
-router.get('/products', auth, async (req, res) => {
+router.get('/products/:catalog', async (req, res) => {
+    const catalog = req.params.catalog
+    
     try {
-        await req.user.populate({
-            path: 'products'
-        })
-        res.send(req.user.products)
+        const product = await Product.find({ catalog })
+
+        if(!product) {
+            return res.status(404).send()
+        }
+
+        res.send(product)
     } catch (e) {
         res.status(500).send()
     }
