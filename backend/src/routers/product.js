@@ -16,6 +16,22 @@ router.post('/products', async (req, res) => {
     }
 })
 
+router.get('/products', async (req, res) => {
+    
+    
+    try {
+        const product = await Product.find({})
+
+        if(!product) {
+            return res.status(404).send()
+        }
+
+        res.send(product)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
 router.get('/products/:catalog', async (req, res) => {
     const catalog = req.params.catalog
     
