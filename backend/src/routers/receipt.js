@@ -6,11 +6,7 @@ const router = new express.Router()
 router.post('/receipt', auth, async (req, res) => {
     
     let item = req.body.item
-    console.log(item)
-    // item.map((item) => {
-    //     console.log(item.name)
-    // })
-
+    
     const receipt = new Receipt({
         ...req.body,
         owner: req.user._id,
