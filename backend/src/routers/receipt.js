@@ -4,12 +4,19 @@ const auth = require('../middleware/auth')
 const router = new express.Router()
 
 router.post('/receipt', auth, async (req, res) => {
+    
+    let item = req.body.item
+    console.log(item)
+    // item.map((item) => {
+    //     console.log(item.name)
+    // })
+
     const receipt = new Receipt({
         ...req.body,
-        owner: req.user._id
-
+        owner: req.user._id,
+        item: item
     })
-
+    
     try {
         await receipt.save()
         res.status(201).send(receipt)
@@ -26,7 +33,6 @@ router.get('/receipt/me', auth, async (req, res) => {
         })
 
         res.send(req.user.receipt)
-        console.log(req.user)
     } catch (e) {
         console.log(e)
         res.status(500).send()
