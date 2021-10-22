@@ -60,5 +60,6 @@ export default styled(Navbar)`
 .icon-btn{
     margin-right: 15px;
     padding-bottom: 3px;
+    
 }
 `
