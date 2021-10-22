@@ -35,7 +35,8 @@ function Navbar({ className }) {
 
 export default styled(Navbar)`
 .nav{
-    background-color: #F6A971;
+    background-color: #FFDC9B;
+    margin-bottom: 20px;
 }
 .inNav {
     margin: 10px;
