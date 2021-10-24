@@ -1,7 +1,8 @@
-import { Navbar as RBNavbar, Container, Nav } from 'react-bootstrap'
+import { Navbar as RBNavbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { LinkContainer } from 'react-router-bootstrap';
 import { BiUser} from "react-icons/bi"
 import { BsFillBagFill } from "react-icons/bs";
 
@@ -12,7 +13,21 @@ function Navbar({ className }) {
             <Container fluid className="d-flex justify-content-between">
                 <Nav className="inNav ">
                     <NavLink to="/home" className="home">Home</NavLink>
-                    <NavLink to="/product" className="product">Product</NavLink>
+                    {/* <NavLink to="/product" className="product">Product</NavLink> */}
+                    <NavDropdown title="Product">
+                        <LinkContainer to={`/products/dry-food`}>
+                            <NavDropdown.Item >Dry Food </NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to={`/products/fresh-food`}>
+                            <NavDropdown.Item >Fresh Food </NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to={`/products/home-user`}>
+                            <NavDropdown.Item >Home User </NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to={`/products/packaging`}>
+                            <NavDropdown.Item >Packaging </NavDropdown.Item>
+                        </LinkContainer>
+                    </NavDropdown>
                 </Nav>
                 <Nav>
                 <RBNavbar.Brand href="/" className="brand">BLUE BAKERY SHOP</RBNavbar.Brand>
@@ -61,5 +76,8 @@ export default styled(Navbar)`
     margin-right: 15px;
     padding-bottom: 3px;
     
+}
+.dropdown-toggle{
+    padding: 0px;
 }
 `
