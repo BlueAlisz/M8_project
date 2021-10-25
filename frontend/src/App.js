@@ -10,6 +10,7 @@ import CatalogMain from './features/CatalogMain';
 import { useParams } from 'react-router-dom';
 import Register from './user/Register';
 import Login from './user/Login'
+import Detail from './detail/Detail'
 
 function App() {
   
@@ -18,6 +19,9 @@ function App() {
       <Navbar />
       <Container>
         <Switch>
+          <Route path="/detail/:id">
+              <Detail />
+          </Route>
           <Route path="/login">
               <Login />
           </Route>
