@@ -7,19 +7,7 @@ import { useParams } from 'react-router-dom';
 import CatalogMain from "../features/CatalogMain";
 
 function Catalog({ className, products }) {
-    // const [products, setProducts] = useState([])
-    // let { catalog } = useParams()
-    // console.log(catalog)
-
-    // useEffect(() => {
-    //     async function getProduct() {
-    //     const products = await axios.get(`/products/${catalog}`)
-    //     setProducts(products.data)
-    //     }
-        
-    //     getProduct();
-    // }, [])
-
+    
     return (
         <>       
             <div className={className}>  

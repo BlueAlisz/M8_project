@@ -1,6 +1,7 @@
 const express = require('express')
-const cors = require('cors');
+const cors = require('cors')
 require('./db/mongoose')
+const cookieParser = require('cookie-parser')
 const userRouter = require('./routers/user')
 const productRouter = require('./routers/product')
 const orderRouter = require('./routers/order')
@@ -10,6 +11,9 @@ const app = express()
 const port = process.env.PORT || 8080
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
+
 app.use(userRouter)
 app.use(productRouter)
 app.use(orderRouter)

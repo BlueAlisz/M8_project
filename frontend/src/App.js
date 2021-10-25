@@ -8,6 +8,8 @@ import React, { useState, useEffect } from "react";
 import Catalog from './product/Catalog';
 import CatalogMain from './features/CatalogMain';
 import { useParams } from 'react-router-dom';
+import Register from './user/Register';
+
 
 function App() {
   
@@ -16,6 +18,9 @@ function App() {
       <Navbar />
       <Container>
         <Switch>
+          <Route path="/sign-in">
+              <Register />
+          </Route>
           <Route path="/products/:catalog">
               <CatalogMain />
           </Route>
