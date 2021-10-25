@@ -40,11 +40,6 @@ function ProductSlide({  className }) {
 }
 
 
-ProductSlide.propTypes = {
-  item: PropTypes.object.isRequired,
-  className: PropTypes.string.isRequired,
-};
-
 export default styled (ProductSlide)`
 h3{
   font-size:20px;

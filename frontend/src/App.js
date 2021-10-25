@@ -5,6 +5,9 @@ import { Container } from 'react-bootstrap';
 import { Switch, Route } from 'react-router';
 import Home from './features/Home';
 import React, { useState, useEffect } from "react";
+import Catalog from './product/Catalog';
+import CatalogMain from './features/CatalogMain';
+import { useParams } from 'react-router-dom';
 
 function App() {
   
@@ -13,6 +16,9 @@ function App() {
       <Navbar />
       <Container>
         <Switch>
+          <Route path="/products/:catalog">
+              <CatalogMain />
+          </Route>
           <Route path="/">
               <Home />
           </Route>
