@@ -20,6 +20,7 @@ function CatalogMain({ className }) {
 
     return (
         <>
+        
         {products.length > 0 ? (
         <div className={className}>  
             <Catalog products={products}/>  

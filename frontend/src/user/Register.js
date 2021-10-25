@@ -104,7 +104,7 @@ function Register({ className }) {
             </div>
             
 
-            <Link to="/sign-in" className="link-login">Already have account ?</Link>
+            <Link to="/login" className="link-login">Already have account ?</Link>
 
           </form>
         </div>

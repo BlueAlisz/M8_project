@@ -9,7 +9,7 @@ import Catalog from './product/Catalog';
 import CatalogMain from './features/CatalogMain';
 import { useParams } from 'react-router-dom';
 import Register from './user/Register';
-
+import Login from './user/Login'
 
 function App() {
   
@@ -18,6 +18,9 @@ function App() {
       <Navbar />
       <Container>
         <Switch>
+          <Route path="/login">
+              <Login />
+          </Route>
           <Route path="/sign-in">
               <Register />
           </Route>
