@@ -16,8 +16,8 @@ function CatalogMain({ className }) {
         }
         
         getProduct();
-    }, [])
-
+    }, [catalog])
+    console.log(products + 'catalog')
     return (
         <>
         
