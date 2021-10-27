@@ -17,16 +17,15 @@ function Login({ className }) {
   const login = (event) => {
     //event.preventDefault();
     axios.post('http://localhost:8080/login',{
-      
         username: username,
         password: password
-      
-      
     }).then((response) => {
       console.log(response)
-      
-
+      console.log(response.data.token)
+      localStorage.setItem("token", response.data.token)
     })
+
+
   }
 
   return (

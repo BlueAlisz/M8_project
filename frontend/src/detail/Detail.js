@@ -23,7 +23,25 @@ function Detail({ className }) {
         
     }, [])
 
-  
+  const addProductToBag = () => {
+    
+    axios.post('http://localhost:8080/order', {
+      name: products.name,
+      image: products.image,
+      description: products.description,
+      price: products.price,
+      amount: count,
+      catalog: products.catalog
+    },{
+      headers: {
+        'Authorization': localStorage.getItem("token")
+      }
+    }).then((response) => {
+      console.log(response);
+        
+    });
+      
+    };
   
   function add(){
     let sum = count+1
@@ -71,7 +89,7 @@ function Detail({ className }) {
                             <h5 style={{color: "red"}}>{total} Bath</h5>
                           </Col>
                         </Row>
-                          <Button variant="warning" className="cart">ADD TO CART</Button>{' '}
+                          <Button variant="warning" className="cart" onClick={addProductToBag}>ADD TO CART</Button>{' '}
                                 
                     </Col>
                   </Row>
