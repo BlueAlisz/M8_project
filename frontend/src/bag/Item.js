@@ -4,29 +4,9 @@ import { Col, Card, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function Item({ item }) {
-    const [count, setCount] = useState(0)
-    const [total, setTotal] = useState(0)
-
-    
-    function add(){
-        let sum = count+1
-        setCount(sum)
-        setTotal(sum*item.price)
-    }
-    
-    function minus(){
-        
-        let sum = count-1
-        if(sum < 0){
-          sum = 0
-        }
-        setCount(sum)
-        setTotal(sum*item.price)
-    }
+function Item({ item, add, minus, count, total }) {
 
     const deleteOrder = () => {
-        
         axios.delete('http://localhost:8080/order', {
             data: { _id: item._id}
 
@@ -34,11 +14,10 @@ function Item({ item }) {
             console.log(response)
             window.location.reload();
         })
-        
-        
     }
 
   return (
+      
       <Row className="product" >
           <Col className="image" md={5}>
           <img src={item.image}></img>
@@ -58,9 +37,9 @@ function Item({ item }) {
             <Row>
                 <Col>
                     <p>amount</p>
-                    <Button variant="warning" onClick={minus}>-</Button>{' '}
+                    <Button variant="warning" onClick={() => minus(item.price)}>-</Button>{' '}
                     <Button variant="outline-warning" disabled>{count}</Button>{' '}
-                    <Button variant="warning" onClick={add}>+</Button>{' '}
+                    <Button variant="warning" onClick={() => add(item.price)}>+</Button>{' '}
                 </Col>
                 <Col className="delete">
                 <Button variant="danger" onClick={deleteOrder}>Delete</Button>
