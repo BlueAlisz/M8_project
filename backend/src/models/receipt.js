@@ -25,10 +25,6 @@ const itemSchema = new mongoose.Schema({
 })
 
 const receiptSchema = new mongoose.Schema({
-    referenceNumber: {
-        type: Number,
-        
-    },
     total: {
         type: Number,
         
