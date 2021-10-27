@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import Register from './user/Register';
 import Login from './user/Login'
 import Detail from './detail/Detail';
+import Bag from './bag/Bag';
 
 function App() {
   
@@ -19,6 +20,9 @@ function App() {
       <Navbar />
       <Container>
         <Switch>
+        <Route path="/bag">
+              <Bag />
+          </Route>
           <Route path="/detail/:id">
               <Detail />
           </Route>

@@ -15,8 +15,8 @@ function Detail({ className }) {
   
   useEffect(() => {
     async function getProduct() {
-    const products = await axios.get(`/detail/${id}`)
-    setProducts(products.data)
+      const products = await axios.get(`/detail/${id}`)
+      setProducts(products.data)
     }
         
     getProduct();

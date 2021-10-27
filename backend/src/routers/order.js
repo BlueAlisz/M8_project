@@ -32,14 +32,15 @@ router.get('/order/me', auth, async (req, res) => {
     }
 })
 
-router.delete('/order/:id', auth, async (req, res) => {
+router.delete('/order', auth, async (req, res) => {
     try {
-        const order = await Order.findOneAndDelete({ _id: req.params.id, owner: req.user._id })
+        //const order = await Order.findOneAndDelete({ _id: req.params.id, owner: req.user._id })
+        const order = await Order.findOneAndDelete({ _id: req.body._id, owner: req.user._id })
 
         if (!order) {
             res.status(404).send()
         }
-
+       // res.send(req.user)
         res.send(order)
     } catch (e) {
         res.status(500).send()
