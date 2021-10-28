@@ -5,8 +5,21 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { LinkContainer } from 'react-router-bootstrap';
 import { BiUser} from "react-icons/bi"
 import { BsFillBagFill } from "react-icons/bs";
+import axios from "axios";
 
 function Navbar({ className }) {
+    axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
+    console.log(localStorage.getItem("token"))
+    function logout(){
+        axios.post('http://localhost:8080/users/logoutAll',{
+
+        }).then((response) => {
+        console.log(response)
+        
+        
+        })
+    }
+
     return(
         <div className={className}>
         <RBNavbar className="nav" variant="light">
@@ -40,14 +53,14 @@ function Navbar({ className }) {
                         <LinkContainer to={`/receiptHistory`}>
                             <NavDropdown.Item >Receipt </NavDropdown.Item>
                         </LinkContainer>
-                        <LinkContainer to={`/products/home-user`}>
+                        <LinkContainer to={`/login`} onClick={logout}>
                             <NavDropdown.Item >Logout </NavDropdown.Item>
                         </LinkContainer>
                     </NavDropdown>
                     <NavLink to="/bag" className="icon-btn" activeClassName="active" >
                         <BsFillBagFill size={25} color={"black"} />
                     </NavLink>
-                    <NavLink to="/sign-in" className="icon-btn" activeClassName="active" >
+                    <NavLink to="/login" className="icon-btn" activeClassName="active" >
                         <BiUser size={30} color={"black"} />
                     </NavLink>
                 </Nav>

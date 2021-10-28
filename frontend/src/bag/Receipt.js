@@ -41,6 +41,12 @@ function Receipt({ className }){
             console.log(response);
             alert("Thank you for buying");
             history.push('/home')
+
+            axios.delete('http://localhost:8080/orderAll',{
+
+            }).then((response) => {
+                
+            })
         })
         
     }

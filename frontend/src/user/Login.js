@@ -68,7 +68,7 @@ function Login({ className }) {
             </div>
             <h1>{loginStatus}</h1>
 
-            <Link to="/sign-in" className="link-signup">Don't have account ?</Link>
+            <Link to="/sign-up" className="link-signup">Don't have account ?</Link>
 
           </form>
         </div>
