@@ -3,8 +3,13 @@ import React, { useState, useEffect } from "react";
 import { Col, Card, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useHistory } from "react-router";
 
-function Item({ item, add, minus, count, total }) {
+function Item({ item }) {
+    const [count, setCount] = useState(item.amount)
+    const [total, setTotal] = useState([item.allPrice])
+    const [all, setAll] = useState(0)
+    const history = useHistory()
 
     const deleteOrder = () => {
         axios.delete('http://localhost:8080/order', {
@@ -15,6 +20,50 @@ function Item({ item, add, minus, count, total }) {
             window.location.reload();
         })
     }
+    //console.log(total)
+    const updateOrder = () => {
+        axios.post('http://localhost:8080/orderUpdate', {
+            _id: item._id,
+            amount: count,
+            allPrice: total
+        }).then((response) => {
+            console.log(response)
+            history.push('/home')
+            history.push('/bag')
+        })
+    }
+    
+    // let test = 0
+    // test += parseInt(total)
+    // //console.log(test)
+        
+    
+    
+
+    function add(){
+        let sums = count+1
+        let total = sums*item.price
+        let totalPrice = 0
+        totalPrice = totalPrice + total
+        //console.log(totalPrice)
+        setCount(sums)
+        setTotal(total)
+        updateOrder()
+    }
+    
+    function minus(){
+        let sums = count-1
+        let total = sums*item.price
+        if(sums < 0){
+          sums = 0
+        }
+        setCount(sums)
+        setTotal(total)
+        updateOrder()
+    }
+    //let sum = item.amount * item.price
+
+    
 
   return (
       
@@ -37,9 +86,9 @@ function Item({ item, add, minus, count, total }) {
             <Row>
                 <Col>
                     <p>amount</p>
-                    <Button variant="warning" onClick={() => minus(item.price)}>-</Button>{' '}
+                    <Button variant="warning" onClick={minus}>-</Button>{' '}
                     <Button variant="outline-warning" disabled>{count}</Button>{' '}
-                    <Button variant="warning" onClick={() => add(item.price)}>+</Button>{' '}
+                    <Button variant="warning" onClick={add}>+</Button>{' '}
                 </Col>
                 <Col className="delete">
                 <Button variant="danger" onClick={deleteOrder}>Delete</Button>
@@ -47,11 +96,7 @@ function Item({ item, add, minus, count, total }) {
                 
                 </Col>
             </Row>
-            
-            
-            
-            
-            
+
           </Col>
       </Row>
   )

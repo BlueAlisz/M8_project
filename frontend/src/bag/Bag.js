@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import { Row, Col, Container, Button } from "react-bootstrap";
-import { useParams } from "react-router";
+
 import axios from "axios";
 import Item from "./Item";
+import { useHistory } from "react-router";
 
 function Bag({ className }){
     const [products, setProducts] = useState([])
-    const [count, setCount] = useState(0)
-    const [total, setTotal] = useState(0)
-    const [sum, setSum] = useState(0)
+    const history = useHistory()
     axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
 
     useEffect(() => {
@@ -21,41 +20,14 @@ function Bag({ className }){
         getProduct()
     }, [])
 
-    console.log(products)
-    function add(price){
-        let sums = count+1
-        let total = sums*price
+    let test = 0
+    products.forEach((product) => {
+        test += parseInt(product.allPrice)
         
-        setCount(sums)
-        setTotal(total)
-        setSum(total)
-    }
-    
-    function minus(price){
-        let sums = count-1
-        let total = sums*price
-        
-        if(sums < 0){
-          sums = 0
-        }
-        setCount(sums)
-        setTotal(total)
-        setSum(total)
-    }
+    });   
+
     const reciept = () => {
-
-        axios.post('http://localhost:8080/receipt', {
-
-            total: count,
-            item: products
-            
-        },{
-            headers: {
-                'Authorization': localStorage.getItem("token")
-              }
-        }).then((response) => {
-            console.log(response);
-        })
+        history.push('/confirmOrder')
     }
     return(
         <>
@@ -68,10 +40,7 @@ function Bag({ className }){
                             return <Item 
                             key={value._id} 
                             item={value}
-                            add={add}
-                            minus={minus}
-                            count={count}
-                            total={total} />;
+                            />;
                         })}
                     </Col>
                     <Col md={4}>
@@ -80,7 +49,7 @@ function Bag({ className }){
                             <h5 className="mt-3 mx-3">Total</h5>
                             </Col>
                             <Col className="sumPrice mt-3 mx-3">
-                            <h5>{sum}</h5>
+                            <h5>{test}</h5>
                             </Col>
 
                             

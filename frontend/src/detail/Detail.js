@@ -31,6 +31,7 @@ function Detail({ className }) {
       description: products.description,
       price: products.price,
       amount: count,
+      allPrice: count*products.price,
       catalog: products.catalog
     },{
       headers: {

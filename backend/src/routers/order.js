@@ -47,6 +47,24 @@ router.delete('/order', auth, async (req, res) => {
     }
 })
 
+router.post('/orderUpdate', auth, async (req, res) => {
+    const updates = Object.keys(req.body)
+
+    try {
+        const order = await Order.findOneAndUpdate({ _id: req.body._id, owner: req.user._id})
+
+        if (!order) {
+            return res.status(404).send()
+        }
+
+        updates.forEach((update) => order[update] = req.body[update])
+        await order.save()
+        res.send(order)
+    } catch (e) {
+        res.status(400).send(e)
+    }
+})
+
 router.delete('/orderAll', auth, async (req, res) => {
     try {
         const order = await Order.deleteMany({ owner: req.user._id })

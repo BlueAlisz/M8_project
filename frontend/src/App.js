@@ -12,6 +12,7 @@ import Register from './user/Register';
 import Login from './user/Login'
 import Detail from './detail/Detail';
 import Bag from './bag/Bag';
+import Receipt from './bag/Receipt';
 
 function App() {
   
@@ -20,7 +21,10 @@ function App() {
       <Navbar />
       <Container>
         <Switch>
-        <Route path="/bag">
+          <Route path="/confirmOrder">
+              <Receipt />
+          </Route>
+          <Route path="/bag">
               <Bag />
           </Route>
           <Route path="/detail/:id">

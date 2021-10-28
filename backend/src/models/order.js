@@ -22,6 +22,10 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         default: 1
     },
+    allPrice: {
+        type: Number,
+        required: true
+    },
     catalog: {
         type: String,
         required: true
