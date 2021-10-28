@@ -33,6 +33,17 @@ function Navbar({ className }) {
                 <RBNavbar.Brand href="/" className="brand">BLUE BAKERY SHOP</RBNavbar.Brand>
                 </Nav>
                 <Nav>
+                    <NavDropdown title="profile">
+                        <LinkContainer to={`/products/dry-food`}>
+                            <NavDropdown.Item >Profile </NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to={`/products/fresh-food`}>
+                            <NavDropdown.Item >Receipt </NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to={`/products/home-user`}>
+                            <NavDropdown.Item >Logout </NavDropdown.Item>
+                        </LinkContainer>
+                    </NavDropdown>
                     <NavLink to="/bag" className="icon-btn" activeClassName="active" >
                         <BsFillBagFill size={25} color={"black"} />
                     </NavLink>

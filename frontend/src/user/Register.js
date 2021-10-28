@@ -10,10 +10,14 @@ function Register({ className }) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [password, setPassword] = useState("");
+  const [checkPs, setCheckPs] = useState("");
   const [email, setEmail] = useState("");
 
   const addUser = (event) => {
     event.preventDefault();
+    if( password !== checkPs){
+      alert("Password dont't match")
+    }else{
     axios.post('http://localhost:8080/sign-up', {
       username: username,
       email: email,
@@ -24,7 +28,7 @@ function Register({ className }) {
       console.log(response);
       
     });
-    
+    }
   };
     
   
@@ -78,7 +82,6 @@ function Register({ className }) {
             </div>
 
             <div className=" input-group">
-              
               <input
                 name="password"
                 type="password"
@@ -88,17 +91,16 @@ function Register({ className }) {
               />
             </div>
 
-            {/* <div className=" input-group">
-              
+            <div className=" input-group">
               <input
                 name="password"
                 type="password"
                 id="password"
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(event) => setCheckPs(event.target.value)}
                 placeholder="Password"
               />
-            </div> */}
-
+            </div>
+          
             <div className="btnSignup">
               <button onClick={addUser}>Sign Up</button>
             </div>

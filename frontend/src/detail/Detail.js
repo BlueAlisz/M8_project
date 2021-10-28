@@ -39,7 +39,7 @@ function Detail({ className }) {
       }
     }).then((response) => {
       console.log(response);
-        
+      alert('Add to bag')
     });
       
     };
