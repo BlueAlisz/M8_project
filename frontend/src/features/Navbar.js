@@ -34,7 +34,7 @@ function Navbar({ className }) {
                 </Nav>
                 <Nav>
                     <NavDropdown title="profile">
-                        <LinkContainer to={`/products/dry-food`}>
+                        <LinkContainer to={`/profile`}>
                             <NavDropdown.Item >Profile </NavDropdown.Item>
                         </LinkContainer>
                         <LinkContainer to={`/products/fresh-food`}>

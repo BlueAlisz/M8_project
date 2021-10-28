@@ -5,23 +5,23 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 function Login({ className }) {
-  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userData, setUserdata] = useState("")
   const [loginStatus, setLoginStatus] = useState("");
+  const history = useHistory()
   
-  //ส่งไป backend
-  const login = (event) => {
-    axios.post('http://localhost:8080/userData',{
+  axios.post('http://localhost:8080/userData',{
       username: username
     }).then((response) => {
-      console.log(response.data.status)
+      //console.log(response.data.status)
       setUserdata(response.data.status)
       
     })
-
-    if(userData != "Active"){
+  //ส่งไป backend
+  const login = (event) => {
+    
+    if(userData !== "Active"){
       alert('Please verify your email')
     }else{
       axios.post('http://localhost:8080/login',{
@@ -31,7 +31,7 @@ function Login({ className }) {
         console.log(response)
         console.log(response.data.token)
         localStorage.setItem("token", response.data.token)
-      
+        history.push('/profile')
     })
     }
   }

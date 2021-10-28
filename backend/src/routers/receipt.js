@@ -2,6 +2,7 @@ const express = require('express')
 const Receipt = require('../models/receipt')
 const auth = require('../middleware/auth')
 const router = new express.Router()
+const receiptEmail = require("../middleware/sendReceipt")
 
 router.post('/receipt', auth, async (req, res) => {
     
@@ -15,6 +16,7 @@ router.post('/receipt', auth, async (req, res) => {
     
     try {
         await receipt.save()
+        receiptEmail()
         res.status(201).send(receipt)
     } catch (e) {
         res.status(400).send(e)

@@ -14,7 +14,7 @@ import Detail from './detail/Detail';
 import Bag from './bag/Bag';
 import Receipt from './bag/Receipt';
 import Verify from './user/Verify';
-
+import Profile from './profile/Profile';
 function App() {
   
   return (
@@ -22,6 +22,9 @@ function App() {
       <Navbar />
       <Container>
         <Switch>
+          <Route path="/profile">
+              <Profile />
+          </Route>
           <Route path="/users/confirm/:username">
               <Verify />
           </Route>
