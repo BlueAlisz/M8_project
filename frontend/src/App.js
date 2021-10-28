@@ -16,6 +16,7 @@ import Receipt from './bag/Receipt';
 import Verify from './user/Verify';
 import Profile from './profile/Profile';
 import EditProfile from './profile/EditProfile';
+import Receipts from './profile/Receipt';
 function App() {
 //chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
   return (
@@ -23,36 +24,39 @@ function App() {
       <Navbar />
       <Container>
         <Switch>
-        <Route path="/editprofile">
+            <Route path="/receiptHistory">
+              <Receipts />
+             </Route>
+            <Route path="/editprofile">
               <EditProfile />
-          </Route>
-          <Route path="/profile">
+             </Route>
+            <Route path="/profile">
               <Profile />
-          </Route>
-          <Route path="/users/confirm/:username">
+            </Route>
+            <Route path="/users/confirm/:username">
               <Verify />
-          </Route>
-          <Route path="/confirmOrder">
+            </Route>
+             <Route path="/confirmOrder">
               <Receipt />
-          </Route>
-          <Route path="/bag">
+            </Route>
+             <Route path="/bag">
               <Bag />
-          </Route>
-          <Route path="/detail/:id">
+             </Route>
+             <Route path="/detail/:id">
               <Detail />
-          </Route>
-          <Route path="/login">
+            </Route>
+             <Route path="/login">
               <Login />
-          </Route>
-          <Route path="/sign-in">
+             </Route>
+             <Route path="/sign-in">
               <Register />
-          </Route>
-          <Route path="/products/:catalog">
+             </Route>
+             <Route path="/products/:catalog">
               <CatalogMain />
-          </Route>
-          <Route path="/">
+             </Route>
+             <Route path="/">
               <Home />
-          </Route>
+             </Route>
         </Switch>
       </Container>
     </>
