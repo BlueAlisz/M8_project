@@ -26,7 +26,7 @@ function Register({ className }) {
       password: password,
     }).then((response) => {
       console.log(response);
-      
+      alert('Please go to email for verify')
     });
     }
   };

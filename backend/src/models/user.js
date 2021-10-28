@@ -48,6 +48,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
+    status: {
+        type: String, 
+        enum: ['Pending', 'Active'],
+        default: 'Pending'
+    },
     tokens: [{
         token: {
             type: String,

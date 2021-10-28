@@ -13,6 +13,7 @@ import Login from './user/Login'
 import Detail from './detail/Detail';
 import Bag from './bag/Bag';
 import Receipt from './bag/Receipt';
+import Verify from './user/Verify';
 
 function App() {
   
@@ -21,6 +22,9 @@ function App() {
       <Navbar />
       <Container>
         <Switch>
+          <Route path="/users/confirm/:username">
+              <Verify />
+          </Route>
           <Route path="/confirmOrder">
               <Receipt />
           </Route>

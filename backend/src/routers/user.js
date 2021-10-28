@@ -2,6 +2,7 @@ const express = require('express')
 const User = require('../models/user')
 const auth = require('../middleware/auth')
 const router = new express.Router()
+const verifyEmail = require('../middleware/sendEmail')
 
 router.post('/sign-up', async (req, res) => {
     const user = new User(req.body)
@@ -11,6 +12,7 @@ router.post('/sign-up', async (req, res) => {
         const token = await user.generateAuthToken()
         res.cookie('auth_token', token)
         res.status(201).send({ user, token })
+        verifyEmail(req.body.username).catch(console.error)
     } catch (e) {
         res.status(400).send(e)
     }
@@ -77,6 +79,39 @@ router.delete('/users/me', auth, async (req, res) => {
     try {
         await req.user.remove()
         res.send(req.user)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+router.post('/users/confirm/:username',async (req,res) => {
+
+    try {
+        const user = await User.findOne({ username: req.params.username})
+
+        if (!user) {
+            return res.status(404).send()
+        }
+
+        user.status = "Active";
+        await user.save()
+        res.send(user)
+    } catch (e) {
+        res.status(400).send(e)
+    }
+})
+
+router.post('/userData', async (req, res) => {
+    
+    
+    try {
+        const user = await User.findOne({username: req.body.username})
+
+        if(!user) {
+            return res.status(404).send()
+        }
+
+        res.send(user)
     } catch (e) {
         res.status(500).send()
     }

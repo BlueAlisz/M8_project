@@ -8,26 +8,34 @@ function Login({ className }) {
   
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [userData, setUserdata] = useState("")
   const [loginStatus, setLoginStatus] = useState("");
   
-
-  console.log(username)
   //ส่งไป backend
   const login = (event) => {
-    //event.preventDefault();
-    axios.post('http://localhost:8080/login',{
+    axios.post('http://localhost:8080/userData',{
+      username: username
+    }).then((response) => {
+      console.log(response.data.status)
+      setUserdata(response.data.status)
+      
+    })
+
+    if(userData != "Active"){
+      alert('Please verify your email')
+    }else{
+      axios.post('http://localhost:8080/login',{
         username: username,
         password: password
     }).then((response) => {
-      console.log(response)
-      console.log(response.data.token)
-      localStorage.setItem("token", response.data.token)
-      localStorage.setItem("userId", response.data._id)
+        console.log(response)
+        console.log(response.data.token)
+        localStorage.setItem("token", response.data.token)
+      
     })
-
-
+    }
   }
+  
 
   return (
     <>
