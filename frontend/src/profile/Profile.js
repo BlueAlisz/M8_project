@@ -20,7 +20,9 @@ function Profile({ className }){
             
     }, [])
     
-    console.log(users)
+    function goEdit(){
+        history.push('/editprofile')
+    }
 
     return(
         <>
@@ -54,7 +56,7 @@ function Profile({ className }){
                     
                     
                     
-                    <button className="buttonPaid mt-3" >Edit</button>
+                    <button className="buttonPaid mt-3" onClick={goEdit}>Edit</button>
                 </div>
 
             </Container>

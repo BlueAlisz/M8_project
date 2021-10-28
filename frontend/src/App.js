@@ -15,13 +15,17 @@ import Bag from './bag/Bag';
 import Receipt from './bag/Receipt';
 import Verify from './user/Verify';
 import Profile from './profile/Profile';
+import EditProfile from './profile/EditProfile';
 function App() {
-  
+//chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
   return (
     <>
       <Navbar />
       <Container>
         <Switch>
+        <Route path="/editprofile">
+              <EditProfile />
+          </Route>
           <Route path="/profile">
               <Profile />
           </Route>
