@@ -12,6 +12,7 @@ function Register({ className }) {
   const [password, setPassword] = useState("");
   const [checkPs, setCheckPs] = useState("");
   const [email, setEmail] = useState("");
+  const history = useHistory()
 
   const addUser = (event) => {
     event.preventDefault();
@@ -27,6 +28,7 @@ function Register({ className }) {
     }).then((response) => {
       console.log(response);
       alert('Please go to email for verify')
+      history.push('/login')
     });
     }
   };

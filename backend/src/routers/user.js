@@ -12,7 +12,7 @@ router.post('/sign-up', async (req, res) => {
         const token = await user.generateAuthToken()
         res.cookie('auth_token', token)
         res.status(201).send({ user, token })
-        verifyEmail(req.body.username).catch(console.error)
+        verifyEmail(req.body.username,req.body.email).catch(console.error)
     } catch (e) {
         res.status(400).send(e)
     }

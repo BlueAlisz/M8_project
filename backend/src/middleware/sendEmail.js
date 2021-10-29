@@ -1,7 +1,7 @@
 'use strict';
 const nodemailer = require('nodemailer');
 
-async function verifyEmail(username) {
+async function verifyEmail(username,email) {
 // สร้างออปเจ็ค transporter เพื่อกำหนดการเชื่อมต่อ SMTP และใช้ตอนส่งเมล
 let transporter = nodemailer.createTransport({
  host: 'smtp.gmail.com',
@@ -15,10 +15,12 @@ let transporter = nodemailer.createTransport({
 // เริ่มทำการส่งอีเมล
 let info = await transporter.sendMail({
 from: '"Fred Foo 👻" <nattaphatblue.2545@gmail.com>', 
-to: 'nattaphatblue.2762@gmail.com', 
-subject: 'Hello ✔', 
+to: email, 
+subject: 'Please confirm your account', 
 text: 'Hello world?', 
-html: `<b></b>please click this link </b>
+html: `<h1>Email Confirmation</h1>
+<h2>Hello ${username}</h2>
+<p>Thank you for register. Please confirm your email by clicking on the following link</p>
 <a href=http://localhost:3000/users/confirm/${username}> Click here</a>`
 });
 

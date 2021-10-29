@@ -57,6 +57,8 @@ router.post('/orderUpdate', auth, async (req, res) => {
             return res.status(404).send()
         }
 
+        
+
         updates.forEach((update) => order[update] = req.body[update])
         await order.save()
         res.send(order)

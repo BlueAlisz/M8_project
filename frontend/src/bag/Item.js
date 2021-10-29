@@ -23,7 +23,7 @@ function Item({ item }) {
     //console.log(total)
     const updateOrder = () => {
         axios.post('http://localhost:8080/orderUpdate', {
-            _id: item._id,
+            id: item._id,
             amount: count,
             allPrice: total
         }).then((response) => {
@@ -33,13 +33,6 @@ function Item({ item }) {
         })
     }
     
-    // let test = 0
-    // test += parseInt(total)
-    // //console.log(test)
-        
-    
-    
-
     function add(){
         let sums = count+1
         let total = sums*item.price
@@ -54,6 +47,8 @@ function Item({ item }) {
     function minus(){
         let sums = count-1
         let total = sums*item.price
+        let totalPrice = 0
+        totalPrice = totalPrice - total
         if(sums < 0){
           sums = 0
         }
@@ -61,9 +56,6 @@ function Item({ item }) {
         setTotal(total)
         updateOrder()
     }
-    //let sum = item.amount * item.price
-
-    
 
   return (
       
