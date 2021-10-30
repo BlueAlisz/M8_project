@@ -1,5 +1,5 @@
 import { Navbar as RBNavbar, Container, Nav, NavDropdown } from 'react-bootstrap'
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { LinkContainer } from 'react-router-bootstrap';

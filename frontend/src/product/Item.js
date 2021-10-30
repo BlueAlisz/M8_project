@@ -1,9 +1,7 @@
-import PropTypes from "prop-types";
 import React from "react";
-// import ReactPlayer from "react-player";
 import { Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+
 
 function Item({ item }) {
   return (

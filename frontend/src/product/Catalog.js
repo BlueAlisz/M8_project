@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from 'axios';
 import Item from './Item'
-import { Row, Col, Button } from 'react-bootstrap'
-import { useParams } from 'react-router-dom';
-import CatalogMain from "../features/CatalogMain";
+import { Row } from 'react-bootstrap'
+
 
 function Catalog({ className, products }) {
     

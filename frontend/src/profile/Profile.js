@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
-import { Row, Col, Container, Button } from "react-bootstrap";
-import { useParams } from "react-router";
+import { Row, Container,} from "react-bootstrap";
+
 import axios from "axios";
 import { useHistory } from "react-router";
 

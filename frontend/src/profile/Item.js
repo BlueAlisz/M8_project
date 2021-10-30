@@ -1,9 +1,6 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { Col, Card, Row, Button, Alert } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { useHistory } from "react-router";
+import React, { useState } from "react";
+import { Button, Alert } from "react-bootstrap";
+
 import ItemDetail from "./ItemDetail"
 
 function Item({ item }){

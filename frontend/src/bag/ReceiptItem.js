@@ -1,9 +1,5 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { Col, Card, Row, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { useHistory } from "react-router";
+import { Col, Row } from "react-bootstrap";
+
 
 function ReceiptItem({ item }) {
 

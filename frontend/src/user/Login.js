@@ -7,7 +7,6 @@ function Login({ className }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userData, setUserdata] = useState([])
-  const [loginStatus, setLoginStatus] = useState("");
   const history = useHistory()
   
   useEffect(() => {
@@ -78,7 +77,7 @@ function Login({ className }) {
               
 
             </div>
-            <h1>{loginStatus}</h1>
+           
 
             <Link to="/sign-up" className="link-signup">Don't have account ?</Link>
 

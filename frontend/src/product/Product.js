@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from 'axios';
 import Item from './Item'
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row } from 'react-bootstrap'
 
 function Product({ className }) {
     const [products, setProducts] = useState([])

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Col, Card, Row, Button } from "react-bootstrap";
+import { Col, Row, Button } from "react-bootstrap";
 
 function Item({ item }) {
     const deleteOrder = () => {
@@ -51,7 +51,7 @@ function Item({ item }) {
       
       <Row className="product" >
           <Col className="image" md={5}>
-          <img src={item.image}></img>
+          <img src={item.image} alt="images"></img>
           </Col>
           <Col md={7}>
             <h5 className="mt-3">{item.name}</h5>

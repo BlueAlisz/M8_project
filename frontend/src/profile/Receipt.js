@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
-import { Row, Col, Container, Button } from "react-bootstrap";
 import axios from "axios";
-import { useHistory } from "react-router";
 import Item from "./Item";
 
 function Receipt({ className }){
