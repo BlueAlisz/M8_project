@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
@@ -7,33 +6,46 @@ import axios from "axios";
 function Login({ className }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [userData, setUserdata] = useState("")
+  const [userData, setUserdata] = useState([])
   const [loginStatus, setLoginStatus] = useState("");
   const history = useHistory()
   
-  axios.post('http://localhost:8080/userData',{
-      username: username
-    }).then((response) => {
-      //console.log(response.data.status)
-      setUserdata(response.data.status)
-      
-    })
-  //ส่งไป backend
-  const login = (event) => {
+  useEffect(() => {
+    async function getUser() {
+        const userData = await axios.get('/userData')
+        setUserdata(userData.data)
+    }
     
-    if(userData !== "Active"){
-      alert('Please verify your email')
-    }else{
+    getUser()
+  }, [])
+
+  let ckUsername = []
+  userData.forEach((value) => {
+    ckUsername.push(value.username)
+  })
+  
+
+  const login = (event) => {
+
+      if(!ckUsername.includes(username)){
+        alert('No this username')
+      }
+    
       axios.post('http://localhost:8080/login',{
         username: username,
         password: password
     }).then((response) => {
         console.log(response)
-        console.log(response.data.token)
-        localStorage.setItem("token", response.data.token)
-        history.push('/profile')
+        console.log(response.data.user.status)
+        if(response.data.user.status !== "Active"){
+          alert('Please verify your email')
+        }else{
+          localStorage.setItem("token", response.data.token)
+          history.push('/profile')
+        }
+        
     })
-    }
+    
   }
   
 

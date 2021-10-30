@@ -1,16 +1,7 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
 import { Col, Card, Row, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { useHistory } from "react-router";
 
 function Item({ item }) {
-    const [count, setCount] = useState(item.amount)
-    const [total, setTotal] = useState([item.allPrice])
-    const [all, setAll] = useState(0)
-    const history = useHistory()
-
     const deleteOrder = () => {
         axios.delete('http://localhost:8080/order', {
             data: { _id: item._id}
@@ -71,7 +62,7 @@ function Item({ item }) {
             </Col>
             <Col>
                 <h5>Total</h5>
-                <h5 style={{color: "red"}}>{total} Bath</h5>
+                <h5 style={{color: "red"}}>{item.allPrice} Bath</h5>
             </Col>
             </Row>
             <Row>

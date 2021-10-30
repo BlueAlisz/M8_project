@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
-import { Row, Col, Container, Button } from "react-bootstrap";
+import { Row, Col} from "react-bootstrap";
 
 import axios from "axios";
 import Item from "./Item";
@@ -8,7 +8,6 @@ import { useHistory } from "react-router";
 
 function Bag({ className }){
     const [products, setProducts] = useState([])
-    const[name,setName] = useState([])
     const history = useHistory()
     axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
 

@@ -101,11 +101,11 @@ router.post('/users/confirm/:username',async (req,res) => {
     }
 })
 
-router.post('/userData', async (req, res) => {
+router.get('/userData', async (req, res) => {
     
     
     try {
-        const user = await User.findOne({username: req.body.username})
+        const user = await User.find({})
 
         if(!user) {
             return res.status(404).send()
