@@ -43,8 +43,6 @@ function Receipt({ className }){
 
             axios.delete('http://localhost:8080/orderAll',{
 
-            }).then((response) => {
-                
             })
         })
         

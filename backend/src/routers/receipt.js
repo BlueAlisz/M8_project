@@ -16,7 +16,7 @@ router.post('/receipt', auth, async (req, res) => {
     
     try {
         await receipt.save()
-        receiptEmail()
+        receiptEmail(req.user.email)
         res.status(201).send(receipt)
     } catch (e) {
         res.status(400).send(e)
