@@ -51,7 +51,7 @@ router.post('/orderUpdate', auth, async (req, res) => {
     const updates = Object.keys(req.body)
 
     try {
-        const order = await Order.findOneAndUpdate({ _id: req.body._id, owner: req.user._id})
+        const order = await Order.findOneAndUpdate({ _id: req.body.id, owner: req.user._id})
 
         if (!order) {
             return res.status(404).send()
@@ -63,7 +63,7 @@ router.post('/orderUpdate', auth, async (req, res) => {
         await order.save()
         res.send(order)
     } catch (e) {
-        res.status(400).send(e)
+        res.status(999).send(e)
     }
 })
 
@@ -78,6 +78,22 @@ router.delete('/orderAll', auth, async (req, res) => {
         res.send(order)
     } catch (e) {
         res.status(500).send()
+    }
+})
+
+router.patch('/orderUp', auth, async (req, res) => {
+    const amount = req.body.amount
+    const allPrice = req.body.allPrice
+    
+
+    try {
+        const order = await Order.findOne({ _id: req.body._id, owner: req.user._id})
+        order.amount = amount
+        order.allPrice = allPrice
+        await order.save()
+        res.send(order)
+    } catch (e) {
+        res.status(400).send(e)
     }
 })
 

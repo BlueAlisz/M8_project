@@ -8,6 +8,7 @@ import { useHistory } from "react-router";
 
 function Bag({ className }){
     const [products, setProducts] = useState([])
+    const[name,setName] = useState([])
     const history = useHistory()
     axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
 
@@ -16,6 +17,7 @@ function Bag({ className }){
             const products = await axios.get('/order/me')
             setProducts(products.data)
         }
+        
 
         getProduct()
     }, [])

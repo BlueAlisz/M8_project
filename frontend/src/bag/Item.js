@@ -21,40 +21,39 @@ function Item({ item }) {
         })
     }
     //console.log(total)
-    const updateOrder = () => {
-        axios.post('http://localhost:8080/orderUpdate', {
-            id: item._id,
-            amount: count,
-            allPrice: total
+    const amountUp = () => {
+        let amount = item.amount+1
+        let allPrice = amount*item.price
+        axios.patch('http://localhost:8080/orderUp', {
+            _id: item._id,
+            amount: amount,
+            allPrice: allPrice
         }).then((response) => {
             console.log(response)
-            history.push('/home')
-            history.push('/bag')
+            //history.push('/home')
+            window.location.reload();
         })
+        console.log(item._id)
+        console.log(amount)
+        console.log(allPrice)
     }
     
-    function add(){
-        let sums = count+1
-        let total = sums*item.price
-        let totalPrice = 0
-        totalPrice = totalPrice + total
-        //console.log(totalPrice)
-        setCount(sums)
-        setTotal(total)
-        updateOrder()
-    }
     
-    function minus(){
-        let sums = count-1
-        let total = sums*item.price
-        let totalPrice = 0
-        totalPrice = totalPrice - total
-        if(sums < 0){
-          sums = 0
-        }
-        setCount(sums)
-        setTotal(total)
-        updateOrder()
+    const amountDown = () => {
+        let amount = item.amount-1
+        let allPrice = amount*item.price
+        axios.patch('http://localhost:8080/orderUp', {
+            _id: item._id,
+            amount: amount,
+            allPrice: allPrice
+        }).then((response) => {
+            console.log(response)
+            //history.push('/home')
+            window.location.reload();
+        })
+        console.log(item._id)
+        console.log(amount)
+        console.log(allPrice)
     }
 
   return (
@@ -78,9 +77,9 @@ function Item({ item }) {
             <Row>
                 <Col>
                     <p>amount</p>
-                    <Button variant="warning" onClick={minus}>-</Button>{' '}
-                    <Button variant="outline-warning" disabled>{count}</Button>{' '}
-                    <Button variant="warning" onClick={add}>+</Button>{' '}
+                    <Button variant="warning" onClick={amountDown}>-</Button>{' '}
+                    <Button variant="outline-warning" disabled>{item.amount}</Button>{' '}
+                    <Button variant="warning" onClick={amountUp}>+</Button>{' '}
                 </Col>
                 <Col className="delete">
                 <Button variant="danger" onClick={deleteOrder}>Delete</Button>
