@@ -33,7 +33,7 @@ function Product({ className }) {
 
 export default styled(Product)`
 .card-text{
-    font-size: 25px;
+    font-size: 23px;
     color: red;
 }
 .card-body{

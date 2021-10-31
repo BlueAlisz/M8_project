@@ -9,6 +9,9 @@ function ReceiptItem({ item }) {
           <Col>
             <p>{item.name}</p>
           </Col>
+          <Col className="amount">
+            <p>{item.amount}</p>
+          </Col>
           <Col className="price">
             <p>{item.allPrice} Bath</p>
           </Col>

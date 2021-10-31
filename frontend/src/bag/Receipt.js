@@ -48,6 +48,10 @@ function Receipt({ className }){
         
     }
 
+    function cancel() {
+        history.push('/bag')
+    }
+
     return(
         <>
         <div className={className}>
@@ -56,8 +60,9 @@ function Receipt({ className }){
                     <h1>RECEIPT</h1>
                     <Row>
                         <Col><h5>Name</h5></Col>
+                        <Col><h5>Amount</h5></Col>
                         <Col className="price">
-                            <h5>price</h5>
+                            <h5>Price</h5>
                         </Col>
                     </Row>
                     <div className = "top">
@@ -78,8 +83,9 @@ function Receipt({ className }){
                         </Col>
                     </Row>
                     
-                    
                     <button className="buttonPaid mt-3" onClick={reciept}>Confirm</button>
+                    <button className="buttonPaid mt-3" onClick={cancel}>Cancel</button>
+                    
                 </div>
 
             </Container>
@@ -121,21 +127,24 @@ p{
 }
 .buttonPaid{
     background-color: orange;
-  border: none;
+    border: none;
   color: white;
   padding: 5px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 22px;
   margin: 4px 2px;
   cursor: pointer;
   width: 350px;
   margin-left: 50px;
-  transition-duration: 0.4s;
+  transition: 0.4s;
+  border-radius: 20px;
 }
 .buttonPaid:hover {
-  background-color: orangered;
-  color: white;
+    box-shadow: 0 2px 4px 0 lightgray, 0 3px 10px 0 lightgray;
+}
+.amount{
+    margin-left: 50px;
 }
 `
