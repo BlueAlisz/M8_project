@@ -23,6 +23,9 @@ function Login({ className }) {
     ckUsername.push(value.username)
   })
   
+  if(localStorage.getItem("token") !== 'none'){
+    history.push('/profile')
+  }
 
   const login = (event) => {
 
@@ -153,7 +156,7 @@ padding-top: 50px;
     padding: 0.5rem 0.7rem;
     cursor: pointer;
     color: #ffffff;
-    background-color: #28a745;
+    background-color: orange;
     border-radius: 0.75rem;
     border: none;
     margin-bottom: 30px;

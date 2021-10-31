@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import axios from "axios";
 import Item from "./Item";
-
+import { useHistory } from 'react-router-dom'
 function Receipt({ className }){
     const [receipt, setReceipt] = useState([])
     axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
-
+    const history = useHistory()
     useEffect(() => {
         async function getRecceipt() {
             const receipts = await axios.get('/receipt/me')
@@ -15,6 +15,11 @@ function Receipt({ className }){
 
         getRecceipt()
     }, [])
+
+    if(localStorage.getItem("token") == 'none'){
+        alert('Please login')
+        history.push('/login')
+    }
 
     return(
         <>

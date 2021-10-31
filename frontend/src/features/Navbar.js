@@ -1,25 +1,27 @@
 import { Navbar as RBNavbar, Container, Nav, NavDropdown } from 'react-bootstrap'
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { LinkContainer } from 'react-router-bootstrap';
 import { BiUser} from "react-icons/bi"
 import { BsFillBagFill } from "react-icons/bs";
-import axios from "axios";
+import axios from "axios"
 
 function Navbar({ className }) {
     axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
     console.log(localStorage.getItem("token"))
+    const history = useHistory() 
     function logout(){
         axios.post('http://localhost:8080/users/logoutAll',{
 
         }).then((response) => {
         console.log(response)
-        
+        localStorage.setItem("token", 'none')
+        history.push('/login')
         
         })
     }
-
+    console.log(localStorage.getItem("token"))
     return(
         <div className={className}>
         <RBNavbar className="nav" variant="light">

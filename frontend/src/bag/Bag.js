@@ -25,7 +25,12 @@ function Bag({ className }){
     products.forEach((product) => {
         test += parseInt(product.allPrice)
         
-    });   
+    });  
+    
+    if(localStorage.getItem("token") == 'none'){
+        alert('Please login')
+        history.push('/login')
+    }
 
     const reciept = () => {
         history.push('/confirmOrder')
@@ -91,7 +96,7 @@ img{
     text-align: right;
 }
 .buttonPaid{
-    background-color: orange;
+background-color: orange;
   border: none;
   color: white;
   padding: 5px 15px;
@@ -103,10 +108,10 @@ img{
   cursor: pointer;
   width: 350px;
   margin-left: 50px;
-  transition-duration: 0.4s;
+  transition: 0.4s;
+  border-radius: 20px;
 }
 .buttonPaid:hover {
-  background-color: orangered;
-  color: white;
+    box-shadow: 0 2px 4px 0 lightgray, 0 3px 10px 0 lightgray;
 }
 `

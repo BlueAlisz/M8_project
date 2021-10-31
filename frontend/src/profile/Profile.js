@@ -21,7 +21,13 @@ function Profile({ className }){
     }, [])
     
     function goEdit(){
+        
         history.push('/editprofile')
+    }
+
+    if(localStorage.getItem("token") == 'none'){
+        alert('Please login')
+        history.push('/login')
     }
 
     return(
